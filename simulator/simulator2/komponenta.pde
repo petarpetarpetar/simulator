@@ -1,6 +1,6 @@
 class komponenta
 {
- public int posX,posY,type,inputA,inputB,output;
+ public int posX,posY,type,inputA=1,inputB,output;
 
  komponenta(int px,int py,int typ){
    rect(0,0,100,100);
@@ -34,10 +34,21 @@ class komponenta
    }
     
    else if(type==4){
-      fill(255);
+     if(inputA == 0)
+     {
+       fill(255);
       rect(tempX-20,tempY-2,15,4);
       fill(60,60,60);
       ellipse(tempX,tempY,25,25);
+     }
+     if(inputA == 1)
+     {
+       fill(255);
+       rect(100,100,15,4);
+       fill(255,0,0);
+       ellipse(125,102,25,25);
+     }
+      
    }
    
    else if(type==5){
