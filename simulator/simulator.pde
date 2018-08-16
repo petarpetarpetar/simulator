@@ -1,11 +1,13 @@
 
 int[][] wires = new int[700][700];
-//1 and  <-->  2 or  <-->  3 not
+//1 and  <-->  2 or  <-->  3 not  <-->  4 button  <-->  5 LED
 
 class komponenta
 {
  int posX,posY,type,inputA,inputB;
  ///////////////////////////////////////
+ 
+ 
  int findInputAnd_A(){//mozda treba proslediti posX,posY
    int result=0;
    
@@ -42,6 +44,7 @@ class komponenta
    return 0;
  }
  /////////////////////////////////////
+ 
  komponenta(int px,int py,int type){ 
   posX=px;posY=py;
   if(type == 1){inputA = findInputAnd_A();inputB=findInputAnd_B();}

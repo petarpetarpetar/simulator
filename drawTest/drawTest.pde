@@ -1,6 +1,7 @@
+PImage s;
 void setup()
 {
-  noLoop();
+  s = loadImage("or_gate.png");
 size(700,700);  
 }
 int x=100;int y=50;
@@ -21,6 +22,8 @@ void draw()
   triangle(x,y-15,x,y+15,x+20,y+2);  
   rect(x+28,y-1,10,5);
   ellipse(x+23,y+2,10,10);
-  //x= mouseX;
-  //y= mouseY;
+  x= mouseX;
+ y= mouseY;
+  image(s,300,300,50,30);
 }
+  

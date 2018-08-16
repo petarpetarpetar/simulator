@@ -1,3 +1,7 @@
+boolean edit;
+int select;
+int tempX;
+int tempY;
 
 //1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button
 
@@ -75,7 +79,7 @@ void setup()
   size(700,700);  
   background(200);
 }
-boolean edit;
+
 
 void keyPressed()
 {
@@ -127,4 +131,7 @@ void draw()
 {
  if(edit){edit();}
  drawMenu(); 
+ tempX=mouseX;
+ tempY=mouseY;
+ 
 }
