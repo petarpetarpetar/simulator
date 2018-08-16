@@ -2,6 +2,20 @@ boolean edit;
 int select;
 int tempX;
 int tempY;
+boolean selectFlag;
+int clickX;
+int clickY;
+boolean clickFlag;
+
+void mouseReleased()
+{
+  
+  if(edit  || selectFlag){
+ clickX = mouseX;
+ clickY = mouseY;
+ clickFlag = true;
+  }
+}
 
 //1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button
 
@@ -83,23 +97,30 @@ void setup()
 
 void keyPressed()
 {
- if(key == 'e' || key == 'E'){if(edit){edit=false;}else{edit=true;}println("e");}
+ if(key == 'e' || key == 'E'){if(edit){edit=false;selectFlag=false;clickFlag=false;select=0;}else{edit=true;}println("e");}
 }
 
 void edit()
 {
-
-   //EDIT
+  
+  if(clickFlag){
+    clickFlag=false;
+    if(clickY>10 && clickY<40){
+       if(clickX>10 && clickX<40){select=1;selectFlag=true;}
+       else if(clickX>50 && clickX<80){select=2;selectFlag=true;}
+    }
+    else if(clickY>50 && clickY<80){
+      if(clickX>10 && clickX<40){select=3;selectFlag=true;}
+      else if(clickX>50 && clickX<80){select=4;selectFlag=true;}
+      else if(clickX>90 && clickX<133){select=5;selectFlag=true;}
     
-    
-    
-  
-  
-  
-  
+    }   
+  }
+  print(select);
 }
 void drawMenu()
 {
+ background(200);
  fill(100);
  textSize(30);
  fill(100);
@@ -133,5 +154,20 @@ void draw()
  drawMenu(); 
  tempX=mouseX;
  tempY=mouseY;
+ if(selectFlag){
+   
+   if(select==1){  rect(tempX-20,tempY-10,10,5);//inA
+  rect(tempX-20,tempY+5,10,5);//inB
+  rect(tempX+17,tempY-2,10,5);
+  rect(tempX-10,tempY-15,10,30);
+  arc(tempX, tempY, 35, 30, -HALF_PI, HALF_PI); }
+   else if(select==2){}
+   else if(select==3){}
+   else if(select==4){}
+   else if(select==5){}
+   
+   
+ }
+ 
  
 }
