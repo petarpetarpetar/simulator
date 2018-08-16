@@ -6,17 +6,24 @@ int tempY;
 boolean selectFlag;
 int clickX;
 int clickY;
-boolean clickFlag;
+boolean clickFlag,clickFlag2;
 PImage s;
-
 void mouseReleased()
 {
   
   if(edit  || selectFlag){
+    print("released");
  clickX = mouseX;
  clickY = mouseY;
  clickFlag = true;
   }
+  if(selectFlag){
+    
+    clickX=mouseX;
+    clickY=mouseY;
+    clickFlag2 = true;
+  }
+  
 }
 
 //1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button
@@ -95,7 +102,7 @@ void edit()
     
     }   
   }
-  print(select);
+  
 }
 void drawMenu()
 {
@@ -134,9 +141,21 @@ void draw()
  tempX=mouseX;
  tempY=mouseY;
  fill(255);
+ 
  if(selectFlag){
+   println("sF/cF/select",selectFlag+" "+clickFlag2+" "+select);
+   if(clickFlag2){
+     komp[brojac].type=select;
+     komp[brojac].posX=clickX;
+     komp[brojac].posY=clickY;
+     println("test");
+       brojac++;
+     clickFlag=false;
+     selectFlag=false;
+     select=0;
+   }
    
-   if(select==1){  
+   else if(select==1){  
   rect(tempX-20,tempY-10,10,5);//inA
   rect(tempX-20,tempY+5,10,5);//inB
   rect(tempX+17,tempY-2,10,5);
@@ -166,6 +185,5 @@ void draw()
    
    
  }
- 
- 
+
 }
