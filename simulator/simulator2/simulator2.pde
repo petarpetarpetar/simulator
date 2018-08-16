@@ -27,55 +27,11 @@ void mouseReleased()
 }
 
 //1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button
-//komponenta[] komp = new komponenta[11];              //imamo klasu komponenta koja ima poziciju i dva ulaza preko toga racunamo output u void update()
-//konekcija[] kon = new konekcija[100];
+
 
 ArrayList<komponenta> komp =  new ArrayList<komponenta>();            //imamo klasu komponenta koja ima poziciju i dva ulaza preko toga racunamo output u void update()
 ArrayList<konekcija> kon =  new ArrayList<konekcija>();    
 
-/*void updateInput()
-{
-  for(int i=0;i<11;i++)
-  {
-   if(komp[i].type==1){} 
-   
-   else if(komp[i].type==2){}
-    
-   else if(komp[i].type==3){}
-    
-   else if(komp[i].type==4){}
-    
-    
-  }
-  
-  
-}
-
-
-void updateOutput(){
-  for(int i=0;i<10;i++)
-  { 
-     if(komp[i].type == 1){   
-       if(komp[i].inputA==1 && komp[i].inputB==1){komp[i].output = 1;}
-       else{komp[i].output =1;}
-     }
-     
-     else if(komp[i].type == 2){
-       if(komp[i].inputA==1 || komp[i].inputB==1){komp[i].output= 1;}
-       else{komp[i].output = 1;}  
-   }
-     
-     else if(komp[i].type == 3){komp[i].output = -komp[i].inputA;}
-  }
-}
-
-void updateConections()
-{
-  
-  
-  
-}
-*/
 void setup()
 {
   s = loadImage("or_gate.png");
@@ -137,6 +93,7 @@ void drawMenu()
  else{fill(255,0,0);}    //edit
  ellipse(222,66,20,20);
 }
+
 void draw()
 {
  
@@ -164,6 +121,7 @@ void draw()
    }
    
    else if(select==1){  
+     fill(255);
   rect(tempX-20,tempY-10,10,5);//inA
   rect(tempX-20,tempY+5,10,5);//inB
   rect(tempX+17,tempY-2,10,5);
@@ -172,19 +130,24 @@ void draw()
   }
  
    else if(select==2){
-   image(s,tempX-20,tempY-15,50,30);
+     
+      image(s,tempX-20,tempY-15,50,30);
    }
    
    else if(select==3){
-  rect(tempX-10,tempY-2,10,5);
-  triangle(tempX,tempY-15,tempX,tempY+15,tempX+20,tempY+2);  
-  rect(tempX+28,tempY-1,10,5);
-  ellipse(tempX+23,tempY+2,10,10);
+     fill(255);
+      rect(tempX-10,tempY-2,10,5);
+      triangle(tempX,tempY-15,tempX,tempY+15,tempX+20,tempY+2);  
+      rect(tempX+28,tempY-1,10,5);
+      ellipse(tempX+23,tempY+2,10,10);
    
    }
     
    else if(select==4){
-   
+       fill(255);
+      rect(tempX-20,tempY-2,15,4);
+      fill(60,60,60);
+      ellipse(tempX,tempY,25,25);
    }
    
    else if(select==5){
