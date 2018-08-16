@@ -1,11 +1,13 @@
 boolean edit;
 int select;
 int tempX;
+int brojac;
 int tempY;
 boolean selectFlag;
 int clickX;
 int clickY;
 boolean clickFlag;
+PImage s;
 
 void mouseReleased()
 {
@@ -18,30 +20,6 @@ void mouseReleased()
 }
 
 //1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button
-
-class komponenta
-{
- int posX,posY,type,inputA,inputB,output;
-
- komponenta(int px,int py,int typ){ 
-  posX=px;posY=py;type=typ;
- }
- 
-}
-
-class konekcija
-{
- int start,data,end;
- 
- konekcija(int start,int data, int end)
- {
-  this.start= start;
-  this.data = data;
-  this.end = end;
- }
- 
-}
-
 komponenta[] komp = new komponenta[11];              //imamo klasu komponenta koja ima poziciju i dva ulaza preko toga racunamo output u void update()
 konekcija[] kon = new konekcija[100];
 
@@ -90,6 +68,7 @@ void updateConections()
 
 void setup()
 {
+  s = loadImage("or_gate.png");
   size(700,700);  
   background(200);
 }
@@ -154,17 +133,36 @@ void draw()
  drawMenu(); 
  tempX=mouseX;
  tempY=mouseY;
+ fill(255);
  if(selectFlag){
    
-   if(select==1){  rect(tempX-20,tempY-10,10,5);//inA
+   if(select==1){  
+  rect(tempX-20,tempY-10,10,5);//inA
   rect(tempX-20,tempY+5,10,5);//inB
   rect(tempX+17,tempY-2,10,5);
   rect(tempX-10,tempY-15,10,30);
-  arc(tempX, tempY, 35, 30, -HALF_PI, HALF_PI); }
-   else if(select==2){}
-   else if(select==3){}
-   else if(select==4){}
-   else if(select==5){}
+  arc(tempX, tempY, 35, 30, -HALF_PI, HALF_PI);
+  }
+ 
+   else if(select==2){
+   image(s,tempX-20,tempY-15,50,30);
+   }
+   
+   else if(select==3){
+  rect(tempX-10,tempY-2,10,5);
+  triangle(tempX,tempY-15,tempX,tempY+15,tempX+20,tempY+2);  
+  rect(tempX+28,tempY-1,10,5);
+  ellipse(tempX+23,tempY+2,10,10);
+   
+   }
+    
+   else if(select==4){
+   
+   }
+   
+   else if(select==5){
+   
+   }
    
    
  }
