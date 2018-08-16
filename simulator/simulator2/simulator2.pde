@@ -27,10 +27,13 @@ void mouseReleased()
 }
 
 //1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button
-komponenta[] komp = new komponenta[11];              //imamo klasu komponenta koja ima poziciju i dva ulaza preko toga racunamo output u void update()
-konekcija[] kon = new konekcija[100];
+//komponenta[] komp = new komponenta[11];              //imamo klasu komponenta koja ima poziciju i dva ulaza preko toga racunamo output u void update()
+//konekcija[] kon = new konekcija[100];
 
-void updateInput()
+ArrayList<komponenta> komp =  new ArrayList<komponenta>();            //imamo klasu komponenta koja ima poziciju i dva ulaza preko toga racunamo output u void update()
+ArrayList<konekcija> kon =  new ArrayList<konekcija>();    
+
+/*void updateInput()
 {
   for(int i=0;i<11;i++)
   {
@@ -72,7 +75,7 @@ void updateConections()
   
   
 }
-
+*/
 void setup()
 {
   s = loadImage("or_gate.png");
@@ -136,23 +139,28 @@ void drawMenu()
 }
 void draw()
 {
+ 
+ 
  if(edit){edit();}
  drawMenu(); 
  tempX=mouseX;
  tempY=mouseY;
  fill(255);
- 
+ for(komponenta k : komp)
+ {
+   k.drawK();
+ }
  if(selectFlag){
    println("sF/cF/select",selectFlag+" "+clickFlag2+" "+select);
    if(clickFlag2){
-     komp[brojac].type=select;
-     komp[brojac].posX=clickX;
-     komp[brojac].posY=clickY;
+     komp.add(new komponenta(clickX,clickY,select));
+    clickFlag2 = false;
      println("test");
        brojac++;
      clickFlag=false;
      selectFlag=false;
      select=0;
+     println(komp.size());
    }
    
    else if(select==1){  
