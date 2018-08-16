@@ -44,14 +44,23 @@ class komponenta
      if(inputA == 1)
      {
        fill(255);
-       rect(100,100,15,4);
+       rect(tempX-20,tempY-2,15,4);
        fill(255,0,0);
-       ellipse(125,102,25,25);
+       ellipse(tempX,tempY,25,25);
      }
       
    }
    
    else if(type==5){
+           fill(255,0,0);
+     rect(tempX-10,tempY-10,20,20);
+     fill(255);
+     rect(tempX-6,tempY-6,12,12);
+     line(tempX-10,tempY-10,tempX-6,tempY-6);
+     line(tempX+10,tempY-10,tempX+6,tempY-6);
+     line(tempX-10,tempY+10,tempX-6,tempY+6);
+     line(tempX+10,tempY+10,tempX+6,tempY+6);
+     rect(tempX+10,tempY-2,15,4);
    
    }
  }
