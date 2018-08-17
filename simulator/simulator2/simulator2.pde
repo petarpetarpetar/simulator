@@ -8,28 +8,11 @@ int clickX;
 int clickY;
 boolean clickFlag,clickFlag2;
 PImage s;
-void mouseReleased()
-{
-  
-  if(edit  || selectFlag){
-    print("released");
- clickX = mouseX;
- clickY = mouseY;
- clickFlag = true;
-  }
-  if(selectFlag){
-    
-    clickX=mouseX;
-    clickY=mouseY;
-    clickFlag2 = true;
-  }
-  
-}
+
 
 //1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button
 
-
-ArrayList<komponenta> komp =  new ArrayList<komponenta>();            //imamo klasu komponenta koja ima poziciju i dva ulaza preko toga racunamo output u void update()
+ArrayList<komponenta> komp =  new ArrayList<komponenta>();
 ArrayList<konekcija> kon =  new ArrayList<konekcija>();    
 
 void setup()
@@ -45,24 +28,6 @@ void keyPressed()
  if(key == 'e' || key == 'E'){if(edit){edit=false;selectFlag=false;clickFlag=false;select=0;}else{edit=true;}println("e");}
 }
 
-void edit()
-{
-  
-  if(clickFlag){
-    clickFlag=false;
-    if(clickY>10 && clickY<40){
-       if(clickX>10 && clickX<40){select=1;selectFlag=true;}
-       else if(clickX>50 && clickX<80){select=2;selectFlag=true;}
-    }
-    else if(clickY>50 && clickY<80){
-      if(clickX>10 && clickX<40){select=3;selectFlag=true;}
-      else if(clickX>50 && clickX<80){select=4;selectFlag=true;}
-      else if(clickX>90 && clickX<133){select=5;selectFlag=true;}
-    
-    }   
-  }
-  
-}
 void drawMenu()
 {
  background(200);
@@ -76,7 +41,8 @@ void drawMenu()
  rect(50,10,30,30);//NOT
  rect(50,50,30,30);//LED
  rect(90,50,43,30);//TASTER
- rect(145,50,90,30);
+ rect(145,50,90,30);//Edit_mode
+ rect(250,50,90,30);//wire_mode
  fill(190);
  
  fill(0,255,255);
@@ -103,12 +69,9 @@ void draw()
  tempX=mouseX;
  tempY=mouseY;
  fill(255);
- for(komponenta k : komp)
- {
-   k.drawK();
- }
+ for(komponenta k : komp){k.drawK();}
  if(selectFlag){
-   println("sF/cF/select",selectFlag+" "+clickFlag2+" "+select);
+   println("sF/cF/select",selectFlag+" "+clickFlag2+" "+select); //debug
    if(clickFlag2){
      komp.add(new komponenta(clickX,clickY,select));
     clickFlag2 = false;
@@ -161,9 +124,6 @@ void draw()
      line(tempX+10,tempY+10,tempX+6,tempY+6);
      rect(tempX+10,tempY-2,15,4);
    
-   }
-   
-   
+   }  
  }
-
 }
