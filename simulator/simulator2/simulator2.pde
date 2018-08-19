@@ -8,6 +8,9 @@ int clickX;
 int clickY;
 boolean clickFlag,clickFlag2;
 PImage s;
+int markX1,markX2,markY1,markY2;
+boolean wireFlag1, wireFlag2,wireWrite;
+komponenta prv,inK;
 
 
 //1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button
@@ -22,10 +25,21 @@ void setup()
   background(200);
 }
 
-
 void keyPressed()
 {
- if(key == 'e' || key == 'E'){if(edit){edit=false;selectFlag=false;clickFlag=false;select=0;}else{edit=true;}println("e");}
+ if(key == 'e' || key == 'E'){if(edit){edit=false;selectFlag=false;clickFlag=false;select=0;}else{edit=true;wireFlag1= false;wireFlag2=false;wireWrite=false;}println("e");}
+ if(key == 'r' || key == 'R'){
+   if(wireWrite)
+   {
+     wireFlag1= false;
+     wireFlag2=false;
+     wireWrite=false;
+   }
+   else
+   {
+     wireWrite=true;
+   }
+ }
 }
 
 void drawMenu()
@@ -69,7 +83,18 @@ void draw()
  tempX=mouseX;
  tempY=mouseY;
  fill(255);
- for(komponenta k : komp){k.drawK();}
+ for(komponenta k : komp)
+ {
+   k.drawK();
+ }
+ for(konekcija k : kon){k.drawK();}
+ if(wireFlag1)
+ {
+   
+  line(markX1,markY1,markX1,mouseY);
+  line(markX1,mouseY,mouseX,mouseY);
+
+ }
  if(selectFlag){
    println("sF/cF/select",selectFlag+" "+clickFlag2+" "+select); //debug
    if(clickFlag2){
@@ -94,7 +119,7 @@ void draw()
  
    else if(select==2){
      
-      image(s,tempX-20,tempY-15,50,30);
+      image(s,tempX-25,tempY-15,50,30);
    }
    
    else if(select==3){
