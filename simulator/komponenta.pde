@@ -1,10 +1,52 @@
 class komponenta
 {
- public int posX,posY,type,inputA,inputB,output;
+ public int posX,posY,type,inputA,inputB,output,trenutna;
 
  komponenta(int px,int py,int typ){
    rect(0,0,100,100);
   posX=px;posY=py;type=typ;
+ }
+ boolean overRect(int x, int y, int rWidth, int rHeight,int mX,int mY)  {
+      if (mX >= x && mX <= x+rWidth && mY >= y && mY <= y+rHeight) 
+      {
+        return true;
+      }
+      else 
+      {
+        return false;
+      }
+ }
+ int overK(int x,int y)
+ {
+   int tempX = posX;
+   int tempY = posY;
+   if(type==1){   
+      if(overRect(tempX-20,tempY-10,10,5,x,y)){trenutna=1;return 1;}//inA
+      if(overRect(tempX-20,tempY+5,10,5,x,y)){trenutna=2;return 2;}//inB
+      if(overRect(tempX+17,tempY-2,10,5,x,y)){trenutna=0;return 0;}//out
+  }
+ 
+   else if(type==2){
+      if(overRect(tempX-24,tempY-7,10,5,x,y)){trenutna=1;return 1;}//inA
+      if(overRect(tempX-24,tempY+5,10,5,x,y)){trenutna=2;return 2;}//inB
+      if(overRect(tempX+15,tempY-2,10,5,x,y)){trenutna=0;return 0;}//out
+   }
+   
+   else if(type==3){
+      if(overRect(tempX-10,tempY-2,10,5,x,y)){trenutna=1;return 1;}//in
+      if(overRect(tempX+28,tempY-1,10,5,x,y)){trenutna=0;return 0;}//out
+   }
+    
+   else if(type==4){
+      if(overRect(tempX-20,tempY-2,15,4,x,y)){trenutna=1;return 1;}//in   
+   }
+   
+   else if(type==5){
+      if(overRect(tempX-20,tempY-2,15,4,x,y)){trenutna=0;return 0;}//out
+     
+   
+   }
+   return -1;
  }
  void drawK()
  {
