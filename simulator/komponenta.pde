@@ -42,8 +42,8 @@ class komponenta
    }
    
    else if(type==5){
-      if(overRect(tempX-20,tempY-2,15,4,x,y)){trenutna=0;return 0;}//out
-     
+      if(overRect(tempX+10,tempY-2,15,4,x,y)){trenutna=0;return 0;}//out
+       
    
    }
    return -1;
@@ -98,26 +98,26 @@ class komponenta
      {
        
            fill(255,0,0);
-     rect(tempX-10,tempY-10,20,20);
-     fill(255);
-     rect(tempX-6,tempY-6,12,12);
-     line(tempX-10,tempY-10,tempX-6,tempY-6);
-     line(tempX+10,tempY-10,tempX+6,tempY-6);
-     line(tempX-10,tempY+10,tempX-6,tempY+6);
-     line(tempX+10,tempY+10,tempX+6,tempY+6);
-     rect(tempX+10,tempY-2,15,4);
+       rect(tempX-10,tempY-10,20,20);
+       fill(255);
+       rect(tempX-6,tempY-6,12,12);
+       line(tempX-10,tempY-10,tempX-6,tempY-6);
+       line(tempX+10,tempY-10,tempX+6,tempY-6);
+       line(tempX-10,tempY+10,tempX-6,tempY+6);
+       line(tempX+10,tempY+10,tempX+6,tempY+6);
+       rect(tempX+10,tempY-2,15,4);
      }
      else
      {
        fill(0,255,0);  
-       rect(200,200,20,20);  
-       fill(255);  
-       rect(204,204,12,12);  
-       line(200,200,204,204);  
-       line(220,200,216,204);  
-       line(200,220,204,216);  
-       line(220,220,216,216);  
-       rect(220,208,15,4);
+       rect(tempX-10,tempY-10,20,20);
+       fill(255);
+       rect(tempX-6,tempY-6,12,12);
+       line(tempX-10,tempY-10,tempX-6,tempY-6);
+       line(tempX+10,tempY-10,tempX+6,tempY-6);
+       line(tempX-10,tempY+10,tempX-6,tempY+6);
+       line(tempX+10,tempY+10,tempX+6,tempY+6);
+       rect(tempX+10,tempY-2,15,4);
      }
    
    }
