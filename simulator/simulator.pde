@@ -20,6 +20,8 @@ ArrayList<konekcija> kon =  new ArrayList<konekcija>();
 
 void setup()
 {
+  println("e/E = edit mode");
+  println("r/R = wire mode");
   s = loadImage("or_gate.png");
   size(700,700);  
   background(200);
@@ -29,6 +31,7 @@ void keyPressed()
 {
  if(key == 'e' || key == 'E'){if(edit){edit=false;selectFlag=false;clickFlag=false;select=0;}else{edit=true;wireFlag1= false;wireFlag2=false;wireWrite=false;}println("e");}
  if(key == 'r' || key == 'R'){
+   println("r");
    if(wireWrite)
    {
      wireFlag1= false;
@@ -69,6 +72,10 @@ void drawMenu()
  text("LED",53,70);
  text("Taster",93,70);
  text("edit_mode",150,70);
+ text("wire_mode",255,70);
+ if(wireWrite){fill(0,255,0);}
+ else{fill(255,0,0);}
+ ellipse(328,66,20,20);
  if(edit){fill(0,255,0);}//edit
  else{fill(255,0,0);}    //edit
  ellipse(222,66,20,20);
@@ -120,8 +127,7 @@ void draw()
    else if(select==2){
      
       image(s,tempX-25,tempY-15,50,30);
-   }
-   
+   }   
    else if(select==3){
      fill(255);
       rect(tempX-10,tempY-2,10,5);
