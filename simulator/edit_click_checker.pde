@@ -12,9 +12,7 @@ void edit()
          selectFlag=true;
        }
     }
-    
-    
-    else if(clickY>50 && clickY<80){
+
       
       if(clickX>10 && clickX<40){
         select=3;
@@ -29,8 +27,6 @@ void edit()
       else if(clickX>90 && clickX<133){
         select=5;
         selectFlag=true;
-      }
-      
-    }   
+      }  
+    }  
   }  
-}

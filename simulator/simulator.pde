@@ -12,6 +12,8 @@ int markX1,markX2,markY1,markY2;
 boolean wireFlag1, wireFlag2,wireWrite;
 int inKU;
 komponenta prv,inK;
+boolean auFlag;
+
 
 
 //1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button
@@ -29,8 +31,11 @@ void setup()
 
 void keyPressed()
 {
- if(key == 'e' || key == 'E'){if(edit){edit=false;selectFlag=false;clickFlag=false;select=0;}else{edit=true;wireFlag1= false;wireFlag2=false;wireWrite=false;}println("e");}
- if(key == 'r' || key == 'R'){
+ if(key == 'u' || key == 'U'){if(auFlag){auFlag=false;}else{auFlag=true;}}
+ if(key == 'e' || key == 'E'){
+   if(edit){edit=false;selectFlag=false;clickFlag=false;select=0;}
+   else{edit=true;}println("e");}
+ if(key == 'w' || key == 'W'){
    if(wireWrite)
    {
      wireFlag1= false;
@@ -58,15 +63,23 @@ void drawMenu()
  fill(100);
  textSize(30);
  fill(100);
- rect(0,0,700,100);
+ rect(0,0,700,100); //menu field
  fill(230);
  rect(10,10,30,30);//AND
  rect(10,50,30,30);//OR
  rect(50,10,30,30);//NOT
  rect(50,50,30,30);//LED
  rect(90,50,43,30);//TASTER
+ 
+ 
+ 
+ 
  rect(145,50,90,30);//Edit_mode
  rect(250,50,90,30);//wire_mode
+ rect(355,50,100,30);//auto_update
+ 
+ 
+ 
  fill(190);
  
  fill(0,255,255);
@@ -80,17 +93,29 @@ void drawMenu()
  text("Taster",93,70);
  text("edit_mode",150,70);
  text("wire_mode",255,70);
+ text("autoUpdate",360,70);
+ if(auFlag){fill(0,255,0);}
+ else{fill(255,0,0);}
+ ellipse(440,66,20,20);
  if(wireWrite){fill(0,255,0);}
  else{fill(255,0,0);}
  ellipse(328,66,20,20);
  if(edit){fill(0,255,0);}//edit
  else{fill(255,0,0);}    //edit
  ellipse(222,66,20,20);
+ fill(0);
+ text("mouseX: "+mouseX,620,112);
+ text("mouseY: "+mouseY,620,124);
 }
-
 void draw()
 {
  
+ if(auFlag){
+   for(komponenta k :but)
+   {
+     k.updateOutput();
+   }
+ }
  
  if(edit){edit();}
  drawMenu(); 
@@ -112,11 +137,13 @@ void draw()
  if(selectFlag){
    println("sF/cF/select",selectFlag+" "+clickFlag2+" "+select); //debug
    if(clickFlag2){
+     if(clickY>100){
      komp.add(new komponenta(clickX,clickY,select));
-     if(select == 5)
-     {
-       but.add(komp.get(komp.size()-1));
-       
+       if(select == 5)
+       {
+         but.add(komp.get(komp.size()-1));
+         
+       }
      }
     clickFlag2 = false;
      println("test");
@@ -170,4 +197,5 @@ void draw()
    
    }  
  }
+ 
 }

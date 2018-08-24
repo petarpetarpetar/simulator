@@ -1,6 +1,40 @@
 void mouseReleased()
 {
-  
+      if(mouseY>50 && mouseY<80){
+        //opcije:
+        if(mouseX>145 && mouseX<235){
+          if(edit){
+            edit=false;
+            selectFlag=false;
+            clickFlag=false;
+            select=0;
+          }
+          else{
+            edit=true;
+          }
+        }
+          
+        if(mouseX>250 && mouseX<340)
+           if(wireWrite){
+              wireFlag1= false;
+              wireFlag2=false;
+              wireWrite=false;
+           }
+           else{
+               wireWrite=true;
+           }
+           
+        
+        if(mouseX>355 && mouseX<455){
+          if(auFlag){
+            auFlag=false;
+          }
+          else{
+            auFlag=true;
+          }
+        }
+      }
+      
   if(edit  || selectFlag){
     print("click ");
  clickX = mouseX;
