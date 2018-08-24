@@ -10,18 +10,18 @@ boolean clickFlag,clickFlag2;
 PImage s;
 int markX1,markX2,markY1,markY2;
 boolean wireFlag1, wireFlag2,wireWrite;
+int inKU;
 komponenta prv,inK;
 
 
 //1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button
 
-ArrayList<komponenta> komp =  new ArrayList<komponenta>();
-ArrayList<konekcija> kon =  new ArrayList<konekcija>();    
+ArrayList<komponenta> komp =  new ArrayList<komponenta>(1);
+ArrayList<konekcija> kon =  new ArrayList<konekcija>(1);
+ArrayList<komponenta> but = new ArrayList<komponenta>(1);
 
 void setup()
 {
-  println("e/E = edit mode");
-  println("r/R = wire mode");
   s = loadImage("or_gate.png");
   size(700,700);  
   background(200);
@@ -31,7 +31,6 @@ void keyPressed()
 {
  if(key == 'e' || key == 'E'){if(edit){edit=false;selectFlag=false;clickFlag=false;select=0;}else{edit=true;wireFlag1= false;wireFlag2=false;wireWrite=false;}println("e");}
  if(key == 'r' || key == 'R'){
-   println("r");
    if(wireWrite)
    {
      wireFlag1= false;
@@ -42,6 +41,14 @@ void keyPressed()
    {
      wireWrite=true;
    }
+ }
+ if(key == 's' || key == 'S')
+ {
+   for(komponenta k :but)
+   {
+     k.updateOutput();
+   }
+   print(""); //<>//
  }
 }
 
@@ -106,6 +113,11 @@ void draw()
    println("sF/cF/select",selectFlag+" "+clickFlag2+" "+select); //debug
    if(clickFlag2){
      komp.add(new komponenta(clickX,clickY,select));
+     if(select == 5)
+     {
+       but.add(komp.get(komp.size()-1));
+       
+     }
     clickFlag2 = false;
      println("test");
        brojac++;
@@ -127,7 +139,8 @@ void draw()
    else if(select==2){
      
       image(s,tempX-25,tempY-15,50,30);
-   }   
+   }
+   
    else if(select==3){
      fill(255);
       rect(tempX-10,tempY-2,10,5);

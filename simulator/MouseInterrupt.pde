@@ -13,6 +13,7 @@ void mouseReleased()
     clickY=mouseY;
     clickFlag2 = true;
   }
+  checkOverB();
   if(wireWrite)
   {
     if((prv = checkOver()) != null)
@@ -20,6 +21,7 @@ void mouseReleased()
       if(!wireFlag1)
       {
         inK=prv;
+        inKU=inK.trenutna;
         wireFlag1 = true;
         markX1 = mouseX;
         markY1 = mouseY;
@@ -30,7 +32,7 @@ void mouseReleased()
         wireFlag2 = true;
         markX2 = mouseX;
         markY2 = mouseY;
-        kon.add(new konekcija(markX1,markY1,markX2,markY2,inK,prv));
+        kon.add(new konekcija(markX1,markY1,markX2,markY2,inK,inKU,prv,prv.trenutna));
         wireFlag2 = false;
         wireFlag1 = false;
       }
