@@ -7,6 +7,17 @@ void mouseReleased()
  clickY = mouseY;
  clickFlag = true;
   }
+  if(pomFlag)
+  {
+    if(pomeranje)
+    {
+    
+    }
+    else
+    {
+      checkOverK();
+    }
+  }
   if(selectFlag){
     
     clickX=mouseX;

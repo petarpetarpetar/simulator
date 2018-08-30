@@ -14,6 +14,16 @@ int inKU;
 komponenta prv,inK;
 boolean auFlag;
 
+
+//varijable za pomeranje
+
+boolean pomFlag;
+boolean pomeranje;
+komponenta komP;
+
+//
+
+
 //1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button
 
 ArrayList<komponenta> komp =  new ArrayList<komponenta>(1);
@@ -50,6 +60,10 @@ void keyPressed()
      k.updateOutput();
    }
    print(""); //<>//
+ }
+ if(key == 'p' || key == 'P')
+ {
+   pomFlag = true;
  }
 }
 
