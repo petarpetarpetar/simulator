@@ -1,12 +1,12 @@
 void checkOverB()
 {
-  for (komponenta k : but)
-  {
-
-
-    if (k.buttonP())
+    for(komponenta k : but)
     {
-      k.updateButton();
+          
+
+        if(k.buttonP())
+        {
+            k.updateButton();
+        }
     }
-  }
 }
