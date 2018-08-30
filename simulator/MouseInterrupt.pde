@@ -1,5 +1,6 @@
 void mouseReleased()
 {
+<<<<<<< HEAD
   if (mouseY>50 && mouseY<80) {
     //opcije:
     if (mouseX>145 && mouseX<235) {
@@ -33,6 +34,10 @@ void mouseReleased()
   }
 
   if (edit  || selectFlag) {
+=======
+  
+  if(edit  || selectFlag){
+>>>>>>> parent of a10ba53... finishing touch
     print("click ");
     clickX = mouseX;
     clickY = mouseY;
