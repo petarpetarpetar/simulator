@@ -24,7 +24,7 @@ komponenta komP;
 //
 
 
-//1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button
+//1 and  <-->  2 or  <-->  3 not  <-->  4 LED  <-->  5 button <-->  6 XOR  <-->  7  NAND  <-->  
 
 ArrayList<komponenta> komp =  new ArrayList<komponenta>(1);
 ArrayList<konekcija> kon =  new ArrayList<konekcija>(1);
