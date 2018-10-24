@@ -1,7 +1,10 @@
 void mouseReleased()
 {
-  
-  if(edit  || selectFlag){
+  if(mouseX>649 && mouseX<681 && mouseY>49 && mouseY<81)
+  {
+    resetTime = millis();
+  }
+  else if(edit  || selectFlag){
     print("click ");
  clickX = mouseX;
  clickY = mouseY;

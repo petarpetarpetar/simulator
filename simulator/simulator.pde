@@ -6,11 +6,13 @@ int tempY;
 boolean selectFlag;
 int clickX;
 int clickY;
+int resetTime;
 boolean clickFlag,clickFlag2;
 PImage s;
 int markX1,markX2,markY1,markY2;
 boolean wireFlag1, wireFlag2,wireWrite;
 int inKU;
+int time;
 komponenta prv,inK;
 boolean auFlag;
 
@@ -38,7 +40,7 @@ void setup()
 }
 
 void keyPressed()
-{
+ {
  if(key == 'u' || key == 'U'){if(auFlag){auFlag=false;}else{auFlag=true;}}
  if(key == 'e' || key == 'E'){if(edit){edit=false;selectFlag=false;clickFlag=false;select=0;}else{edit=true;wireFlag1= false;wireFlag2=false;wireWrite=false;}println("e");}
  if(key == 'w' || key == 'W'){
@@ -80,30 +82,41 @@ void drawMenu()
  rect(0,0,700,100);
  fill(230);
  rect(10,10,30,30);//AND
- rect(10,50,30,30);//OR
- rect(50,10,30,30);//NOT
+ rect(10,50,30,30);//NOT
+ rect(50,10,30,30);//OR
  rect(50,50,30,30);//LED
  rect(90,50,43,30);//TASTER
+ rect(90,10,43,30);//TIMER
  
  
  rect(145,50,90,30);//Edit_mode
  rect(250,50,90,30);//wire_mode
  rect(355,50,100,30);//auto_update
+ rect(480,50,170,30);//internal_time
+ fill(255,200,0);//R
+ rect(650,50,30,30);//ResetButton
  
  fill(190);
  
  fill(0,255,255);
- text("simulator digitalne elektronike",100,30);
+ text("simulator digitalne elektronike",240,30);
+ 
  fill(0);
+ textSize(20);
+ text("Re",652,70);
  textSize(12);
  text("AND",13,30);
  text("OR",57,30);
  text("NOT",13,70);
  text("LED",53,70);
  text("Taster",93,70);
+ text("Timer",93,30);
  text("edit_mode",150,70);
  text("wire_mode",255,70);
  text("autoUpdate",360,70);
+ time = updateTime(resetTime);
+ text("Internal clock: "+str(time),485,70);
+
  if(auFlag){fill(0,255,0);}
  else{fill(255,0,0);}
  ellipse(440,66,20,20);
@@ -205,7 +218,17 @@ void draw()
      line(tempX-10,tempY+10,tempX-6,tempY+6);
      line(tempX+10,tempY+10,tempX+6,tempY+6);
      rect(tempX+10,tempY-2,15,4);
-   
-   }  
+   }
+   else if(select ==6)
+  {
+    //treba vise modova timera...
+     fill(255);
+     rect(tempX-10,tempY-10,20,20);
+     rect(tempX+10,tempY-3,12,6);
+     fill(0);
+     textSize(20);
+     text("T",tempX-7,tempY+8);
+     
+  }
  }
 }

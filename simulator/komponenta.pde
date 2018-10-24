@@ -9,9 +9,13 @@ class komponenta
 
 
  komponenta(int px,int py,int typ){
-   rect(0,0,100,100);
+  // rect(0,0,100,100);
   posX=px;posY=py;type=typ;
   if(type == 5)
+  {
+    output = 0;
+  }
+  if(type == 6)
   {
     output = 0;
   }
@@ -41,6 +45,7 @@ class komponenta
         return false;
       }
  }
+
  boolean buttonP()
  {
    return overRect(posX-10,posY-10,20,20,mouseX,mouseY);
@@ -83,9 +88,11 @@ class komponenta
    
    else if(type==5){
       if(overRect(tempX+10,tempY-2,15,4,x,y)){trenutna=0;return 0;}//out
-     
-   
    }
+   else if(type==6){
+      if(overRect(tempX+10,tempY-8,10,16,x,y)){println("asdasdasd");trenutna=1;return 1;}
+   }
+   
    return -1;
  }
  void updateInput(int data,int pin)
@@ -93,6 +100,7 @@ class komponenta
    if(pin == 1)
    {
      inputA = data;
+     
      if(type == 3 || type == 4 || type == 5)
      {
        inputB = inputA;
@@ -139,6 +147,12 @@ class komponenta
        {
          output = 1;
        }
+     }
+     else if(type == 6)
+     {
+       println("petar");
+       if(time%2000>=1000) {println("petelj");output = 1;}
+       else output = 0;
      }
      for(konekcija k : out)
      {
@@ -220,6 +234,17 @@ class komponenta
      }
    
    }
+  else if(type ==6)
+  {
+    //treba vise modova timera...
+     fill(255);
+     rect(tempX-10,tempY-10,20,20);
+     rect(tempX+10,tempY-3,12,6);
+     fill(0);
+     textSize(20);
+     text("T",tempX-7,tempY+8);
+     
+  }
  }
  
 }
