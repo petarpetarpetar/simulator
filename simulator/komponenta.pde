@@ -90,7 +90,7 @@ class komponenta
       if(overRect(tempX+10,tempY-2,15,4,x,y)){trenutna=0;return 0;}//out
    }
    else if(type==6){
-      if(overRect(tempX+10,tempY-8,10,16,x,y)){println("asdasdasd");trenutna=1;return 1;}
+      if(overRect(tempX+10,tempY-8,10,16,x,y)){println("asdasdasd");trenutna=0;return 0;}
    }
    
    return -1;
@@ -111,6 +111,10 @@ class komponenta
      inputB = data;
    }
    if(inputA != -1 && inputB != -1)
+   {
+     updateOutput();
+   }
+   if(type == 6)
    {
      updateOutput();
    }
@@ -150,13 +154,13 @@ class komponenta
      }
      else if(type == 6)
      {
-       println("petar");
-       if(time%2000>=1000) {println("petelj");output = 1;}
-       else output = 0;
+       if(time%2000>=1000) {output = 1;}
+       else {output = 0;}
      }
      for(konekcija k : out)
      {
        k.prosledi(this,output);
+       println("0");
      }
  }
  void drawK()

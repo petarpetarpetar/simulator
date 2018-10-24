@@ -31,6 +31,7 @@ komponenta komP;
 ArrayList<komponenta> komp =  new ArrayList<komponenta>(1);
 ArrayList<konekcija> kon =  new ArrayList<konekcija>(1);
 ArrayList<komponenta> but = new ArrayList<komponenta>(1);
+ArrayList<komponenta> clock = new ArrayList<komponenta>(1);
 
 void setup()
 {
@@ -163,7 +164,7 @@ void draw()
    if(clickFlag2){
      if(clickY>100){
        komp.add(new komponenta(clickX,clickY,select));
-       if(select == 5)
+       if(select == 5 || select == 6)
        {
          but.add(komp.get(komp.size()-1));
        
